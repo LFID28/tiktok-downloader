@@ -1,0 +1,19 @@
+{
+  "name": "tiktok-downloader",
+  "version": "1.0.0",
+  "description": "Simple TikTok Downloader Web App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "tiktok",
+    "downloader",
+    "web"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.1"
+  }
+}
