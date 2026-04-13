@@ -1,158 +1,19 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Video TikTok Tanpa Watermark Gratis</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #1e5cc8;
-      color: white;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    input {
-      width: 70%;
-      padding: 12px;
-      border-radius: 5px;
-      border: none;
-      margin-top: 10px;
-    }
-
-    button {
-      padding: 12px 20px;
-      background-color: #00c853;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-
-    button:hover {
-      background-color: #00a844;
-    }
-
-    section {
-      margin-top: 40px;
-      text-align: left;
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    a {
-      color: yellow;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <h1>Download Video TikTok Tanpa Watermark</h1>
-  <p>Cepat • Gratis • Tanpa Aplikasi</p>
-
-  <input type="text" id="link" placeholder="Tempel link TikTok di sini">
-  <button onclick="downloadVideo()">Download</button>
-
-  <!-- Tentang -->
-  <section>
-    <h2>Tentang Website Ini</h2>
-    <p>
-      Website ini memungkinkan Anda mengunduh video TikTok tanpa watermark secara gratis.
-      Anda tidak perlu menginstal aplikasi tambahan. Cukup tempel link video TikTok,
-      lalu download dengan mudah dan cepat langsung dari browser Anda.
-    </p>
-  </section>
-
-  <!-- Fitur -->
-  <section>
-    <h2>Fitur Utama</h2>
-    <ul>
-      <li>Download video TikTok tanpa watermark</li>
-      <li>Proses cepat dan mudah</li>
-      <li>Bisa digunakan di HP dan PC</li>
-      <li>Tidak perlu install aplikasi</li>
-      <li>Gratis digunakan selamanya</li>
-    </ul>
-  </section>
-
-  <!-- Cara -->
-  <section>
-    <h2>Cara Menggunakan</h2>
-    <ol>
-      <li>Buka aplikasi TikTok</li>
-      <li>Salin link video</li>
-      <li>Tempel link di kolom di atas</li>
-      <li>Klik tombol Download</li>
-    </ol>
-  </section>
-
-  <!-- Disclaimer -->
-  <section>
-    <h2>Disclaimer</h2>
-    <p>
-      Website ini tidak berafiliasi dengan TikTok atau ByteDance Ltd.
-      Semua konten adalah milik pemiliknya masing-masing.
-      Pengguna bertanggung jawab atas penggunaan konten yang diunduh.
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <hr>
-    <p>
-      <a href="about.html">About</a> |
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="contact.html">Contact</a>
-    </p>
-    <p>© 2026 TikTok Downloader</p>
-  </footer>
-
-</div>
-
 <script>
-function downloadVideo() {
+async function downloadVideo() {
   const link = document.getElementById("link").value;
 
   if (!link) {
-    alert("Masukkan link TikTok dulu!");
+    alert("Masukkan link dulu!");
     return;
   }
 
-  window.open(
-    "https://snaptik.app/en?url=" + encodeURIComponent(link),
-    "_blank"
-  );
+  const res = await fetch(`/api/download?url=${encodeURIComponent(link)}`);
+  const data = await res.json();
+
+  if (data.video) {
+    window.open(data.video, "_blank");
+  } else {
+    alert("Gagal mengambil video");
+  }
 }
 </script>
-
-</body>
-</html>
